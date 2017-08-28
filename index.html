@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>online book library</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script src= "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+</head>
+
+<body ng-app="bookApp">
+  <section class="container mainsec">
+    <div class="row>" <article class=" col-sm-6 addbook">
+      <div class="panel panel-primary">
+        <div class="panel-heading"><span class="fa fa-book"> </span> Add Book</div>
+        <div class="panel-body">
+          <div class="form-group" ng-controller="bookShelfCtrl">
+            <aria label for="booktitle">Book Title:</label>
+              <input type="text" class="form-control" id="booktitle" ng-model="bookttl">
+              <aria label for="author">Author:</label>
+                <input type="text" class="form-control" id="author" ng-model="auth">
+                <aria label for="page">Page:</label>
+                  <input type="number" class="form-control" id="page" ng-model="pageno">
+                  <aria label for="publishdate">Publish Date :</label>
+                    <input type="text" class="form-control" id="publishdate" ng-model="publishdate"></br>
+                    <button type="button" class="btn btn-default" disabled="true" ng-click="bookStore()">+ Add</button>
+          </div>
+        </div>
+      </div>
+      </article>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th id="booktitle">Book Title</th>
+          <th id="author">Author</th>
+          <th id="page">Page</th>
+          <th id="pdate">Publish Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+  <script src="js\app.js"></script>
+  <script src="js\controller.js"></script>
+  <script src="js\validation.js"></script>
+
+
+</body>
+
+</html>
