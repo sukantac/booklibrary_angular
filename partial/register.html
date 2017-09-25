@@ -1,0 +1,25 @@
+<div class="form-group col-xs-8 registration panel panel-danger" ng-controller="registerCtrl" >
+    <h4 class="panel-heading">Welcome user</h3>
+    <form name="myform" class="panel-body">
+        <fieldset>
+            <legend>Sign Up here</legend>
+            <p>
+                <label for="name">Enter your Name:</label>
+                <input type="text" ng-model="regusername" id="name" placeholder="your name" ng-required="true" class="form-control" />
+            </p>
+
+            <p>
+                <label for="password">Enter Password:</label>
+                <input type="password" id="password" ng-model="regpassword" placeholder="your password" maxlength="8" ng-required="true" class="form-control" />
+            </p>
+            <p>
+                <label for="mobilenum">Enter Mobile number:</label>
+                <input type="number" id="mobilenum" ng-model="regmobile" placeholder="your mobile number" maxlength="10" ng-required="true" class="form-control" />
+            </p>
+            <p>
+                <label for="address">Enter Your Address:</label>
+                <textarea id="address" ng-model="regaddress" placeholder="your Address" maxlength="300" ng-required="true" class="form-control"></textarea>
+            </p>
+            <button ng-click=" myform.$valid && storeRecord() " class="btn btn-danger">Submit</button>
+        </fieldset>
+    </form>

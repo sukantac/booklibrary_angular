@@ -1,0 +1,22 @@
+
+<div class="row" ng-controller="homepageCtrl"> 
+    <div id="header">
+      <img src="../images/libb_logo.png" alt="book library logo" id="headerlogo"/>
+     
+      <input type="search" id="srchbox" placeholder="search here"/>
+      <i class="glyphicon glyphicon-search"></i>
+      <span id="unamebind">welcome {{myData}}</span>
+     <button class="btn btn-danger glyphicon glyphicon-log-out" ng-click="logOut()">LOGOUT</button>
+    </div>
+  <article class="col-sm-3 libraryoption">
+  </article>
+     <div class="col-lg-6 addbook">
+        <div ng-repeat="i in bookName">
+          <div class="col-md-6">
+            <a ui-sref={{i.id}}><img class="img-responsive imgg" id={{i.id}} ng-src={{i.src}}/></a>
+          </div>
+        </div>
+      </div>
+    <article class="col-sm-3 libraryquestion">
+      </article>
+</div>

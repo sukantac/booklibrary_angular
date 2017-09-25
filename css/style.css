@@ -1,0 +1,111 @@
+.login{
+    margin-top: 21%;
+    margin-left: 25%;
+    border: 2px solid darkgoldenrod;
+    background-image: url('../images/book_logo.jpg');
+    width: 47%;
+    height: 334px;
+    padding-top: 81px;
+}
+
+.btn{
+    margin-left: 145px;
+    width: 130px;
+    height: 38px;
+}
+h3{
+    font-family: 'lobster';
+    margin-top: -32px;
+    margin-left: 146px;
+    font-size: 31px;
+}
+#bookimg{
+    height: 100%;
+    width: 100%;
+}
+a{
+    float: right;
+    font-size: 16px;
+    color: blueviolet;
+}
+.row{
+    border: 1px solid black;
+}
+.libraryoption{
+    height: 731px;
+    width: 25%;
+    background-color: darkslategray;
+}
+.addbook{
+    height: 731px;
+    width: 50%;
+    background-color:#B0C4DE
+}
+.libraryquestion{
+    height: 731px;
+    width: 25%;
+    background-color: darkslategray;
+}
+ #header{
+    width: auto;
+   
+    height: 94px;
+ }
+  #headerlogo{
+    height: 105%;
+    width: 242px;
+    margin-left: 37px;
+  }
+  #srchbox{
+    margin-left: 64px;
+    height: 37px;
+    width: 327px;
+    padding: 18px;
+    border-radius: 12px
+  }
+  #unamebind{
+    margin-left: 60px;
+    font-size: 30px;
+  }
+  i{
+    margin-left: -40px;
+    font-size: 19px;
+    margin-top: 31px;
+  }
+  .imgg{
+    height: 358px;
+    padding: 5%;
+    width: 255px;
+  }
+  .btn-danger{
+    width: 100px;
+    height: 38px;
+  }
+  .registration {
+    margin-left: 213px;
+    margin-top: 86px;
+    background-color: #445533;
+    opacity: 0.97;;
+}
+fieldset {
+    border: 2px groove #ddd !important;
+    padding: 27px !important;
+    margin: 32px !important;
+}
+legend {
+    font-size: 1.3em !important;
+    font-weight: bold !important;
+    text-align: left !important;
+    width: 122px;
+    border-bottom: 0;
+    color: aliceblue;
+}
+h4 {
+    text-align: center;
+    font-size: 30px;
+    font-style: oblique;
+    color: darkorange;
+}
+label{
+    color:aliceblue;
+}
