@@ -1,65 +1,57 @@
 
-bookApp.controller('loginCtrl', ['$scope', '$rootScope','$location', function($scope, $rootScope,$location) {
-    $scope.Login=function(){
-       $rootScope.loginobj={
-        username:"",
-        password:"",
-        // domainName:"",
-        loggedInStatus:""
+bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+    $rootScope.loggedUserDetails = [];
+    $scope.Login = function () {
+        $rootScope.loginobj = {
+            username: "",
+            password: "",
+            // domainName:"",
+            loggedInStatus: ""
         };
-        $rootScope.loggedUserDetails=[];    
-        
-        $rootScope.loguname= $scope.logusername;
-         $rootScope.logpwd= $scope.logpassword;
+
+        $rootScope.loguname = $scope.logusername;
+        $rootScope.logpwd = $scope.logpassword;
+
         userCredential = JSON.parse(localStorage.getItem('credentialArray')) ? JSON.parse(localStorage.getItem('credentialArray')) : [];
-        for(var k=0;k<userCredential.length;k++){
-            
-                if (userCredential[k].username==$scope.logusername && userCredential[k].pass==$scope.logpassword){
-                    $rootScope.loginobj.username=$scope.logusername;
-                    $rootScope.loginobj.password=$scope.logpwd;
-                    $rootScope.loginobj.loggedInStatus=true;
-                  //  loggedUserDetails.push($rootScope.loginobj);
-                    localStorage.setItem('loggedUserArray',JSON.stringify( $rootScope.loginobj));
-                    $location.path('/home');
-                    break;
-                }
-                  
-               
-                }
-                
-    
-    //   loginobj.username=$scope.username;
-    //   loginobj.password=$scope.password;
-    
-      
-       
-    //   if(loginobj.username==undefined || loginobj.password==undefined)
-    //     {
-    //         swal({
-    //             title: 'oops',
-    //             text: 'please enter user id \ password',
-    //             type: 'warning'
-    //          });
-    //     }
-    //   var domain = loginobj.username.substring(0, loginobj.username.indexOf('\\'));
-    //    $rootScope.userName = loginobj.username.substring(loginobj.username.indexOf('\\') + 1, loginobj.username.length);
-      
-    //   if(domain=="stg")
-    //     {
-    //         $rootScope.isLoggedIn=true;  
-    //         loginobj.username= $rootScope.userName;
-    //         loginobj.domainName=domain;
-    //         loginobj.loggedInStatus=$rootScope.isLoggedIn;
-    //          userCredential.push(loginobj);
-    //         localStorage.setItem('credentialArray',JSON.stringify(userCredential));
-    //        $location.path('/home');
-    //     //    console.log()
-    //     }
-    //     $scope.username="";
-    //     $scope.password="";
+        for (var k = 0; k < userCredential.length; k++) {
+
+            if (userCredential[k].username == $scope.logusername && userCredential[k].pass == $scope.logpassword) {
+                $rootScope.loginobj.username = $scope.logusername;
+                $rootScope.loginobj.password = $scope.logpwd;
+                $rootScope.loginobj.loggedInStatus = true;
+                var username = $rootScope.loginobj.username.substring($rootScope.loginobj.username.indexOf('\\') + 1, $rootScope.loginobj.username.length);
+                $rootScope.loginobj.username = username;
+                //         var domain =  $rootScope.loginobj.username.substring(0,  $rootScope.loginobj.username.indexOf('\\'));
+                //         console.log(domain);
+                loggedUserDetails.push($rootScope.loginobj);
+                localStorage.setItem('loggedUserArray', JSON.stringify(loggedUserDetails));
+                $location.path('/home');
+                return 0;
+            }
+
+        }
+        alert('wrong user_id or password');
+
+
+        $scope.logusername = "";
+        $scope.logpassword = "";
     }
+    //ENABLING ENTER KEY TO LOGIN
+
+   $("#pwd").keyup(function (event) {
+        if (event.keyCode === 13) {
+            $(".btn").click();
+        }
+    });
+        //ENABLING ENTER KEY TO LOGIN WITH ANGULAR DIRECTIVE
+        // angular.element(document.querySelectorAll("#pwd")).ng-keyup(function (event) {
+        //     if (event.keyCode === 13) {
+        //         angular.element(document.querySelectorAll(".btn")).triggerHandler('click');
+        //     }
+        // });
+
     //REGISTRATION PART
-    $scope.register=function(){
+    $scope.register = function () {
         $location.path('/register');
     }
 

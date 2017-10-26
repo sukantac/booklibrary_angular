@@ -1,0 +1,32 @@
+<div class="row teacherParentAddBook" > <article class=" col-sm-6 teacheraAddBook">
+    <div class="panel panel-primary">
+      <div class="panel-heading"><span class="fa fa-book"> </span> Add Book</div>
+      <div class="panel-body">
+        <div class="form-group" ng-controller="bookShelfCtrl">
+          <aria label for="booktitle">Book Title:</label>
+            <input type="text" class="form-control" id="booktitle" ng-model="bookttl">
+            <aria label for="author">Author:</label>
+              <input type="text" class="form-control" id="author" ng-model="auth">
+              <aria label for="page">Page:</label>
+                <input type="number" class="form-control" id="page" ng-model="pageno">
+                <aria label for="publishdate">Publish Date :</label>
+                  <input type="text" class="form-control" id="publishdate" ng-model="publishdate"></br>
+                  <button type="button" class="btn btn-default" disabled="true" ng-click="bookStore()">+ Add</button>
+        </div>
+      </div>
+    </div>
+    </article>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th id="booktitle">Book Title</th>
+        <th id="author">Author</th>
+        <th id="page">Page</th>
+        <th id="pdate">Publish Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>

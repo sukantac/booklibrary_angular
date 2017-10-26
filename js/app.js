@@ -1,4 +1,4 @@
-var bookApp = angular.module('bookApp', ['ngRoute']);
+var bookApp = angular.module('bookApp', ['ngRoute','ui.bootstrap']);
 bookApp.config(function($routeProvider, $locationProvider) {
     $routeProvider
       .when('/', {
@@ -13,27 +13,10 @@ bookApp.config(function($routeProvider, $locationProvider) {
       .when('/home',{
         templateUrl:"partial/home.html",
       })
-  
+      .when('/addBook',{
+        templateUrl:"partial/modal.html",
+      })
      
-      // .when("/home", {
-      //   resolve: {
-      //     check: function($location, $rootScope) {
-      //       // if (!$rootScope.isLoggedIn) {
-      //       //   $location.path('/login')
-      //       // }
-      //       for(var i=0;i<userCredential.length;i++){
-              
-                  
-      //               if(!userCredential[i].loggedInStatus){
-                        
-      //                 $location.path('/login');
-      //                 break;
-      //               }
-      //             }
-      //     }
-      //   },
-      //   templateUrl: "partial/home.html",
-      // })
       
     $locationProvider.hashPrefix('');
   });
@@ -56,4 +39,18 @@ bookApp.config(function($routeProvider, $locationProvider) {
     
     // console.log(JSON.stringify(record));
   }
+
+  //DETECTING TAB CLOSE ON BROWSER
+  window.onbeforeunload = function () {
+    // return "Do you really want to close?";
+    alert("do u want to close");
+};
+
+angular.element(document).ready(function () {
+  var bookList= angular.element(document.getElementsByClassName("img-responsive"));
   
+  // console.log(bookList);
+//alert("page is loaded");  
+  });
+
+
