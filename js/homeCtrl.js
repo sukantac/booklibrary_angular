@@ -69,10 +69,16 @@ bookApp.controller('refreshCtrl', ['$scope', '$rootScope', '$location', function
             break;
         }
         if (loggedUserDetails[i].loggedInStatus == true) {
-            $location.path('/home');
+            if($location.path=== '/addBook'){
+                $location.path('/addBook');
+                break;
+            }
+            else{
+            $location.path('/homePage');
             $scope.myData = loggedUserDetails[i].username;
 
             break;
+            }
         }
 
     }

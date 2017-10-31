@@ -25,7 +25,7 @@ bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', function (
                 //         console.log(domain);
                 loggedUserDetails.push($rootScope.loginobj);
                 localStorage.setItem('loggedUserArray', JSON.stringify(loggedUserDetails));
-                $location.path('/home');
+                $location.path('/homePage');
                 return 0;
             }
 

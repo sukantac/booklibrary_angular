@@ -10,10 +10,30 @@ bookApp.config(function($routeProvider, $locationProvider) {
       .when('/register',{
         templateUrl:"partial/register.html",
       })
-      .when('/home',{
+      .when('/homePage',{
+        resolve:{
+          check: function($location, $rootScope){
+            for (var i = 0; i <= loggedUserDetails.length; i++) {
+              if (loggedUserDetails.length == 0) {
+                  $location.path('/login');
+                  break;
+              }
+            }
+          }
+   },
         templateUrl:"partial/home.html",
       })
       .when('/addBook',{
+           resolve:{
+                  check: function($location, $rootScope){
+                    for (var i = 0; i <= loggedUserDetails.length; i++) {
+                      if (loggedUserDetails.length == 0) {
+                          $location.path('/login');
+                          break;
+                      }
+                    }
+                  }
+           },
         templateUrl:"partial/modal.html",
       })
      
@@ -37,20 +57,9 @@ bookApp.config(function($routeProvider, $locationProvider) {
     userCredential = JSON.parse(localStorage.getItem('credentialArray')) ? JSON.parse(localStorage.getItem('credentialArray')) : [];
     loggedUserDetails = JSON.parse(localStorage.getItem('loggedUserArray')) ? JSON.parse(localStorage.getItem('loggedUserArray')) : [];
     
-    // console.log(JSON.stringify(record));
   }
 
-  //DETECTING TAB CLOSE ON BROWSER
-  window.onbeforeunload = function () {
-    // return "Do you really want to close?";
-    alert("do u want to close");
-};
-
-angular.element(document).ready(function () {
-  var bookList= angular.element(document.getElementsByClassName("img-responsive"));
+  //DECLARING BOOKCONTAINER ARRAY
+  bookRecord = [];
   
-  // console.log(bookList);
-//alert("page is loaded");  
-  });
-
 
