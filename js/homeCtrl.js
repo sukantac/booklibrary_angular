@@ -1,5 +1,5 @@
 //home page controller
-bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location','$filter', '$modal','jsonDataFetchService', function ($scope, $rootScope, $http, $location,$filter,$modal, jsonDataFetchService) {
+bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location','$filter', '$modal','jsonDataFetchService', 'pageRefreshControllingService',function ($scope, $rootScope, $http, $location,$filter,$modal, jsonDataFetchService,pageRefreshControllingService) {
     // $scope.myData=  $rootScope.loguname;
     $scope.checkItem="";
     var showToTeacher = angular.element( document.querySelector( '#teacherRole' ) );
@@ -37,8 +37,15 @@ bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location'
    //OPENING MODAL TO ADD BOOK
    $scope.showPopUp=function(){
     $location.path('/addBook');
+    $scope.currentstatus="addbook";
+    pageRefreshControllingService.setStatus($scope.currentstatus);
+    $rootScope.Currentstatus=pageRefreshControllingService.getStatus();
+    
    }
-
+   $rootScope.Currentstatus=pageRefreshControllingService.getStatus();
+   
+   console.log($rootScope.Currentstatus);
+   
     //  $scope.showpopUp=function(){
     //     $scope.checkItem = "yes";
     //     $modal.open({
@@ -55,9 +62,10 @@ bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location'
 
 }]);
 //page refreshing controller
-bookApp.controller('refreshCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+bookApp.controller('refreshCtrl', ['$scope', '$rootScope', '$location','pageRefreshControllingService', function ($scope, $rootScope, $location,pageRefreshControllingService) {
     loggedUserDetails = JSON.parse(localStorage.getItem('loggedUserArray')) ? JSON.parse(localStorage.getItem('loggedUserArray')) : [];
-
+    var pageStatus=JSON.parse(localStorage.getItem('pagestatus'));
+    
     for (var i = 0; i <= loggedUserDetails.length; i++) {
         if (loggedUserDetails.length == 0) {
             $location.path('/');
@@ -68,20 +76,19 @@ bookApp.controller('refreshCtrl', ['$scope', '$rootScope', '$location', function
             $location.path('/');
             break;
         }
-        if (loggedUserDetails[i].loggedInStatus == true) {
-            if($location.path=== '/addBook'){
-                $location.path('/addBook');
-                break;
-            }
-            else{
+        if (loggedUserDetails[i].loggedInStatus == true && pageStatus==="homepage") {
             $location.path('/homePage');
             $scope.myData = loggedUserDetails[i].username;
 
             break;
-            }
+        }
+        if (loggedUserDetails[i].loggedInStatus == true && pageStatus==="addbook") {
+            $location.path('/addBook');
+            break;
         }
 
     }
+ //  console.log($state.current.name);
 }]);
 
 bookApp.controller('bookImageCtrl',['$scope','$rootScope','$location',function($scope,$rootScope,$location){

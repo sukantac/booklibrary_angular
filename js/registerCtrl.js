@@ -1,3 +1,4 @@
+
 bookApp.controller('registerCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
 
     $scope.storeRecord = function () {

@@ -1,5 +1,6 @@
 //VALIDATION CHECKIMG WHILE ADDING TO BOOK
-bookApp.controller('bookShelfCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+
+bookApp.controller('bookShelfCtrl', ['$scope', '$rootScope', '$location', 'pageRefreshControllingService', function ($scope, $rootScope, $location, pageRefreshControllingService) {
     // $rootScope.bookRecord = [];
 
     $("#booktitle,#author,#page,#publishdate").keyup(function () {
@@ -78,6 +79,12 @@ bookApp.controller('bookShelfCtrl', ['$scope', '$rootScope', '$location', functi
 
         }
     }
+    }
+    //BACKTO HOME PAGE
+    $scope.backToHome=function(){
+        $location.path('/homePage');
+        $scope.currentstatus="homepage";
+        pageRefreshControllingService.setStatus($scope.currentstatus);
     }
 }]);
 

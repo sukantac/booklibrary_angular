@@ -1,5 +1,5 @@
 
-bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {
+bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefreshControllingService', function ($scope, $rootScope, $location,pageRefreshControllingService) {
     $rootScope.loggedUserDetails = [];
     $scope.Login = function () {
         $rootScope.loginobj = {
@@ -26,6 +26,9 @@ bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', function (
                 loggedUserDetails.push($rootScope.loginobj);
                 localStorage.setItem('loggedUserArray', JSON.stringify(loggedUserDetails));
                 $location.path('/homePage');
+                $scope.currentstatus="homepage";
+                pageRefreshControllingService.setStatus($scope.currentstatus);
+                //$rootScope.Currentstatus=pageRefreshControllingService.getStatus();
                 return 0;
             }
 
