@@ -1,5 +1,5 @@
 
-bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefreshControllingService', function ($scope, $rootScope, $location,pageRefreshControllingService) {
+bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefreshControllingService', function ($scope, $rootScope, $location, pageRefreshControllingService) {
     $rootScope.loggedUserDetails = [];
     $scope.Login = function () {
         $rootScope.loginobj = {
@@ -26,7 +26,7 @@ bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefre
                 loggedUserDetails.push($rootScope.loginobj);
                 localStorage.setItem('loggedUserArray', JSON.stringify(loggedUserDetails));
                 $location.path('/homePage');
-                $scope.currentstatus="homepage";
+                $scope.currentstatus = "homepage";
                 pageRefreshControllingService.setStatus($scope.currentstatus);
                 //$rootScope.Currentstatus=pageRefreshControllingService.getStatus();
                 return 0;
@@ -41,17 +41,17 @@ bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefre
     }
     //ENABLING ENTER KEY TO LOGIN
 
-   $("#pwd").keyup(function (event) {
+    $("#pwd").keyup(function (event) {
         if (event.keyCode === 13) {
             $(".btn").click();
         }
     });
-        //ENABLING ENTER KEY TO LOGIN WITH ANGULAR DIRECTIVE
-        // angular.element(document.querySelectorAll("#pwd")).ng-keyup(function (event) {
-        //     if (event.keyCode === 13) {
-        //         angular.element(document.querySelectorAll(".btn")).triggerHandler('click');
-        //     }
-        // });
+    //ENABLING ENTER KEY TO LOGIN WITH ANGULAR DIRECTIVE
+    // angular.element(document.querySelectorAll("#pwd")).ng-keyup(function (event) {
+    //     if (event.keyCode === 13) {
+    //         angular.element(document.querySelectorAll(".btn")).triggerHandler('click');
+    //     }
+    // });
 
     //REGISTRATION PART
     $scope.register = function () {
