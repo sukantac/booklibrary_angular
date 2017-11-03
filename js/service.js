@@ -2,9 +2,9 @@
 bookApp.service("jsonDataFetchService", ['$http', '$q', function ($http, $q) {
     var productName;
     return {
-        getproductName: function () {
+        getproductName: function (jsonUrl) {
             var deferred = $q.defer();
-            $http.get('js/bookCollection.json')
+            $http.get(jsonUrl)
                 .then(function (response) {
                     deferred.resolve(response.data);
                 })

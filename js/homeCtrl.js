@@ -13,7 +13,7 @@ bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location'
     }
 
     //JSON DATAFETCH SERVICE
-    jsonDataFetchService.getproductName().then(function (data) {
+    jsonDataFetchService.getproductName('js/bookCollection.json').then(function (data) {
         $rootScope.bookName = data;
         console.log($rootScope.bookName);
     });
@@ -39,13 +39,17 @@ bookApp.controller('homepageCtrl', ['$scope', '$rootScope', '$http', '$location'
         $location.path('/addBook');
         $scope.currentstatus = "addbook";
         pageRefreshControllingService.setStatus($scope.currentstatus);
-        $rootScope.Currentstatus = pageRefreshControllingService.getStatus();
-
     }
     $rootScope.Currentstatus = pageRefreshControllingService.getStatus();
 
     console.log($rootScope.Currentstatus);
-
+//OPEN THE GALLERY
+$scope.openGallery=function(){
+    alert("welcome to gallery");
+    $location.path('/gallery');
+    $scope.currentstatus = "gallery";
+    pageRefreshControllingService.setStatus($scope.currentstatus);
+  }
 
 }]);
 //page refreshing controller
@@ -74,8 +78,12 @@ bookApp.controller('refreshCtrl', ['$scope', '$rootScope', '$location', 'pageRef
             break;
         }
 
+        if (loggedUserDetails[i].loggedInStatus == true && pageStatus === "gallery") {
+            $location.path('/gallery');
+            break;
+        }
+
     }
-    //  console.log($state.current.name);
 }]);
 
 bookApp.controller('bookImageCtrl', ['$scope', '$rootScope', '$location', function ($scope, $rootScope, $location) {

@@ -46,12 +46,7 @@ bookApp.controller('loginCtrl', ['$scope', '$rootScope', '$location', 'pageRefre
             $(".btn").click();
         }
     });
-    //ENABLING ENTER KEY TO LOGIN WITH ANGULAR DIRECTIVE
-    // angular.element(document.querySelectorAll("#pwd")).ng-keyup(function (event) {
-    //     if (event.keyCode === 13) {
-    //         angular.element(document.querySelectorAll(".btn")).triggerHandler('click');
-    //     }
-    // });
+   
 
     //REGISTRATION PART
     $scope.register = function () {

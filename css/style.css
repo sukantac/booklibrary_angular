@@ -144,3 +144,23 @@ label{
     position: absolute;
     color:lightgoldenrodyellow
 }
+ #gallery a{
+    margin-top: 43px;
+    position: absolute;
+    font-size: 21px;
+    color: lightgoldenrodyellow;
+ }
+  
+  .album{
+    width: 100%;
+    height: 384px;
+    margin-top: 31px;
+  }
+   
+  .smallViewalbum{
+    height: 200px;
+    border: 1px solid black;
+    margin-top: 25px;
+    margin-left: -16px;
+    width: 103%;
+  }

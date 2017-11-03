@@ -36,6 +36,19 @@ bookApp.config(function ($routeProvider, $locationProvider) {
       },
       templateUrl: "partial/modal.html",
     })
+    .when('/gallery', {
+      resolve: {
+        check: function ($location, $rootScope) {
+          for (var i = 0; i <= loggedUserDetails.length; i++) {
+            if (loggedUserDetails.length == 0) {
+              $location.path('/login');
+              break;
+            }
+          }
+        }
+      },
+      templateUrl: "partial/bookGallery.html",
+    })
 
 
   $locationProvider.hashPrefix('');
@@ -49,8 +62,4 @@ function dataFetch() {
   loggedUserDetails = JSON.parse(localStorage.getItem('loggedUserArray')) ? JSON.parse(localStorage.getItem('loggedUserArray')) : [];
   bookRecord = JSON.parse(localStorage.getItem('bookArray')) ? JSON.parse(localStorage.getItem('bookArray')) : [];
 }
-
-//DECLARING BOOKCONTAINER ARRAY
-// bookRecord = [];
-
 

@@ -1,22 +1,20 @@
-angular.module('myApp', [])
-.controller('AlbumCtrl', function($scope) {
-  $scope.images = [
-    {category : 'High', image : 'http://lorempixel.com/g/850/400', description : 'Random Photo', stars : '4/5'},
-    {category : 'Medium', image : 'http://lorempixel.com/g/850/400/sports', description : 'Sports Photo', stars : '3/5'},
-    {category : 'Medium', image : 'http://lorempixel.com/g/850/400/animals', description : 'Animal Photo', stars : '3/5'},
-    {category : 'High', image : 'http://lorempixel.com/g/850/400/abstract', description : 'Abstract Photo', stars : '5/5'},
-    {category : 'Low', image : 'http://lorempixel.com/g/850/400/business', description : 'Business Photo', stars : '1/5'},
-    {category : 'High', image : 'http://lorempixel.com/g/850/400/cats', description : 'Cat Photo', stars : '4/5'},
-    {category : 'Medium', image : 'http://lorempixel.com/g/850/400/city', description : 'City Photo', stars : '3/5'},
-    {category : 'Low', image : 'http://lorempixel.com/g/850/400/fashion', description : 'Fashion Photo', stars : '2/5'},
-    {category : 'High', image : 'http://lorempixel.com/g/850/400/nature', description : 'Nature Photo', stars : '5/5'}
-  ];
+
+// .controller('AlbumCtrl', function($scope) {
+// 
   
-  $scope.currentImage = _.first($scope.images);
+//   $scope.currentImage = _.first($scope.images);
   
-  $scope.imageCategories = _.uniq(_.pluck($scope.images, 'category'));
+//   $scope.imageCategories = _.uniq(_.pluck($scope.images, 'category'));
     
-  $scope.setCurrentImage = function(image) {
-    $scope.currentImage = image;
-  };
+//   $scope.setCurrentImage = function(image) {
+//     $scope.currentImage = image;
+//   };
+// });
+//GALLERY CONTROLLER 
+bookApp.controller('AlbumCtrl', ['$scope', '$rootScope','$location','jsonDataFetchService', function ($scope, $rootScope, $location,jsonDataFetchService) {
+  jsonDataFetchService.getproductName('js/bookGallery.json').then(function (data) {
+    $rootScope.allBookName = data;
+    console.log($rootScope.allBookName);
+    console.log($rootScope.allBookName[0]);
 });
+}]);
